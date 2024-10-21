@@ -1,6 +1,6 @@
 # Containerized TypeScript Application
 
-This repository contains a containerized TypeScript application that is built, tested, and deployed using CI pipelines. The container image is pushed to AWS Elastic Container Registry (ECR) and deployed on AWS App Runner.
+Change this: This repository contains a containerized TypeScript application that is built, tested, and deployed using CI pipelines. The container image is pushed to AWS Elastic Container Registry (ECR) and deployed on AWS App Runner.
 
 ## Table of Contents
 - [Overview](#overview)
