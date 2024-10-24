@@ -6,7 +6,8 @@
 		"ghcr.io/rio/features/k3d:1": {},
 		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {},
 		"ghcr.io/devcontainers/features/node:1": {},
-		"ghcr.io/devcontainers-extra/features/npm-package:1": {}
+		"ghcr.io/devcontainers-extra/features/npm-package:1": {},
+		"ghcr.io/devcontainers-community/npm-features/prettier:1": {}
 	},
 	"postCreateCommand": "sudo /workspaces/josephbaruch.com/setup_k3d.sh", 
 	"forwardPorts": [9900, 9090, 8080]

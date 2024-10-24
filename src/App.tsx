@@ -1,64 +1,60 @@
-import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
-// import SearchIcon from '@mui/icons-material/Search';
-// import MoreIcon from '@mui/icons-material/MoreVert';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import About from './pages/About';
 
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  alignItems: 'flex-start',
-  paddingTop: theme.spacing(1),
-  paddingBottom: theme.spacing(2),
-  '@media all': {
-    minHeight: 128,
-  },
-}));
 
-export default function App() {
+function App() {
+  const pages = ["Home", "Projects", "About"];
+  const [page, setPage] = useState("Home");
+
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        {/* Change position to fixed or sticky to render at the top */}
-        <AppBar position="fixed">
-          <StyledToolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
+    <>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
             <Typography
-              variant="h5"
+              variant="h6"
               noWrap
-              component="div"
-              sx={{ flexGrow: 1, alignSelf: 'flex-end' }}
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
             >
-              Joseph Baruch
-            </Typography>
-            <IconButton size="large" aria-label="search" color="inherit">
-              {/* <SearchIcon /> */}
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="display more actions"
-              edge="end"
-              color="inherit"
-            >
-              {/* <MoreIcon /> */}
-            </IconButton>
-          </StyledToolbar>
-        </AppBar>
-      </Box>
-      {/* Add some padding to avoid content overlapping with AppBar */}
-      <Box sx={{ pt: '128px' }}>
-        {/* Rest of your page content */}
-      </Box>
-    </div>
+            Joseph Baruch
+              </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={() => setPage(page)}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      { page !== "Home" || <Home /> }
+      { page !== "Projects" || <Projects /> }
+      { page !== "About" || <About /> }
+  </>
+  
   );
 }
+export default App;
