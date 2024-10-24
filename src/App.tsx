@@ -7,11 +7,11 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import About from './pages/About';
+import Resume from './pages/Resume';
 
 
 function App() {
-  const pages = ["Home", "Projects", "About"];
+  const pages = ["Home", "Projects", "Resume" ];
   const [page, setPage] = useState("Home");
 
   return (
@@ -52,7 +52,7 @@ function App() {
       </AppBar>
       { page !== "Home" || <Home /> }
       { page !== "Projects" || <Projects /> }
-      { page !== "About" || <About /> }
+      { page !== "Resume" || <Resume />}
   </>
   
   );
