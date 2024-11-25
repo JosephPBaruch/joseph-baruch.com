@@ -30,7 +30,7 @@ rebuild(){
     fi
 
     docker build -t frontend .
-    docker run -d -p $PORT:80 --name frontend_container frontend
+    docker run -d -p $PORT:8080 --name frontend_container frontend
 
 }
 
@@ -46,7 +46,7 @@ no_rebuild(){
     # Check if the container is already running
     if ! docker container ps | grep -q "frontend_container"; then
         echo "Creating and running container on port $PORT"
-        docker run -d -p $PORT:80 --name frontend_container frontend
+        docker run -d -p $PORT:8080 --name frontend_container frontend
     else
         echo "Container already exists"
     fi
