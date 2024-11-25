@@ -33,7 +33,7 @@ jobs:
       # Step 4: Build the Docker image
       - name: Build the Docker image
         run: |
-          docker build -t frontend .
+          docker build -t nginx-web-app .
 
       # Step 5: Build the Docker image
       - name: Tag image
