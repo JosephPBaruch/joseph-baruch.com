@@ -33,18 +33,18 @@ jobs:
       # Step 4: Build the Docker image
       - name: Build the Docker image
         run: |
-          docker build -t nginx-web-app .
+          docker build -t josephbaruch.com .
 
       # Step 5: Build the Docker image
       - name: Tag image
         run: |
-          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nginx-web-app:latest
+          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
           docker tag nginx-web-app:latest $IMAGE_TAG
 
       # Step 6: Push the Docker image to ECR
       - name: Push Docker image to Amazon ECR
         run: |
-          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nginx-web-app:latest
+          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
           docker push $IMAGE_TAG
 
       # Optionally Step 6: Trigger AWS App Runner deployment (if needed)
