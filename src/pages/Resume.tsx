@@ -26,12 +26,12 @@ const Resume: React.FC = () => {
       </Typography>
       <Box>
         <Typography variant="body1" align="center" gutterBottom>
-          Below is my resume displayed in PDF format. Feel free to check it out to learn more about my experience, skills, and education.
+         Feel free to check out my resume to learn more about my experience, skills, and education.
         </Typography>
       </Box>
       <Box className={classes.pdfContainer}>
         <iframe
-          src="./Assets/Resume.pdf"
+          src="./src/pages/Assets/Resume.pdf"
           width="100%"
           height="100%"
           style={{ border: 'none' }}

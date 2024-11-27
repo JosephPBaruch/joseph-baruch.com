@@ -27,19 +27,19 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
-      title: 'Project One',
-      description: 'A full-stack web application built with React, Node.js, and MongoDB.',
-      link: 'https://github.com/yourusername/project-one',
+      title: 'josephbaruch.com',
+      description: 'A frontend web application built with React, AWS, and MUI.',
+      link: 'https://github.com/JosephPBaruch/josephbaruch.com',
     },
     {
-      title: 'Project Two',
-      description: 'A Kubernetes-based microservice project with Go and Docker.',
-      link: 'https://github.com/yourusername/project-two',
+      title: 'Weather App',
+      description: 'A Express.js application making http requests to retrieve weather data based on an address.',
+      link: 'https://github.com/JosephPBaruch/data_web_app',
     },
     {
-      title: 'Project Three',
-      description: 'A CI/CD pipeline setup using Jenkins and Docker for automated deployments.',
-      link: 'https://github.com/yourusername/project-three',
+      title: 'Pong',
+      description: 'Pong built in the Unity game engine',
+      link: 'https://github.com/JosephPBaruch/Pong',
     },
     // Add more projects as needed
   ];
