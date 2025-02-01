@@ -10,6 +10,6 @@
 		"ghcr.io/devcontainers-community/npm-features/prettier:1": {}
 	},
 	"forwardPorts": [
-		8080
+		8084
 	]
 }

@@ -7,7 +7,7 @@ const Home: React.FC = () => {
       <Box display="flex" flexDirection="column" alignItems="center" py={5}>
         <Avatar
           alt="Joseph Baruch"
-          src="./src/pages/Assets/me.jpeg" // Replace with your image path
+          src="/me.jpeg" // Replace with your image path
           sx={{ width: 150, height: 150, mb: 3 }}
         />
         <Typography variant="h4" gutterBottom>
