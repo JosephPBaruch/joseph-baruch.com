@@ -31,7 +31,7 @@ const Resume: React.FC = () => {
       </Box>
       <Box className={classes.pdfContainer}>
         <iframe
-          src="./src/pages/Assets/Resume.pdf"
+          src="/Resume.pdf"
           width="100%"
           height="100%"
           style={{ border: 'none' }}

@@ -1,22 +1,35 @@
-# Use the official Node.js image as the base image
-# Select a specific version for consistency
-FROM node:18 
+# # Stage 1: Build the application
+FROM node:18-alpine AS builder
 
-# Set the working directory in the container
-WORKDIR /app
+WORKDIR /client
 
-# Copy the package.json and package-lock.json files
-COPY package*.json ./
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application source code to the container
+# Copy the rest of the application code
 COPY . .
 
-EXPOSE 8080
+# Build the application
+RUN npm run build
 
-# Build the Vite application
-# RUN npm run dev
+# Stage 2: Serve the application with Nginx
+FROM nginx:alpine
 
-ENTRYPOINT ["npm", "run", "dev"]
+# Copy the built application from the builder stage
+COPY --from=builder /client/dist /usr/share/nginx/html
+
+# Ensure images and resume are copied to the correct location
+# COPY --from=builder /client/src/pages/Assets/me.jpeg /usr/share/nginx/html/images/me.jpeg
+# COPY --from=builder /client/src/pages/Assets/Resume.pdf /usr/share/nginx/html/resume/Resume.pdf
+
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 8084
+EXPOSE 8084
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
