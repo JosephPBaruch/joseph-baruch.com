@@ -24,7 +24,7 @@ const Home: React.FC = () => {
             <Typography variant="body1">
               - Full-stack Development (Go, React, MUI)
               <br />
-              - Micro-services and Containerization
+              - Docker and Kubernetes
               <br />
               - CI/CD Pipelines
               <br />

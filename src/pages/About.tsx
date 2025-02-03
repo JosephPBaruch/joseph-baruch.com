@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const About = () => {
@@ -6,7 +5,7 @@ const About = () => {
     <Box sx={{ p: 3 }}>
       <Typography variant="h4" gutterBottom>About Me</Typography>
       <Typography variant="body1">
-        Hello! I'm Joseph Baruch, a passionate software developer...
+        Coming soon...
       </Typography>
     </Box>
   );

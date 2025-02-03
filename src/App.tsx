@@ -141,7 +141,7 @@ function App() {
           { page !== "About" || <About /> }
           { page !== "Achievements" || <Achievements /> }
         </Box>
-        <AppBar position="static" component="footer" sx={{ top: 'auto', bottom: 0 }}>
+        <AppBar position="static" component="footer" sx={{ top: 'auto', bottom: 0, display: 'flex' }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Typography
@@ -156,13 +156,13 @@ function App() {
                   textDecoration: 'none',
                 }}
               >
-                © {new Date().getFullYear()} Joseph Baruch. All rights reserved.
+               Joseph Baruch
               </Typography>
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'center' }}>
-                <Link color="inherit" href="https://github.com/joseph-baruch" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
+                <Link color="inherit" href="https://github.com/JosephPBaruch" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
                   GitHub
                 </Link>
-                <Link color="inherit" href="https://www.linkedin.com/in/joseph-baruch" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
+                <Link color="inherit" href="https://www.linkedin.com/in/joseph-peter-baruch/" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
                   LinkedIn
                 </Link>
                 <Link color="inherit" href="mailto:josephbaruch48@gmail.com" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>

@@ -27,8 +27,13 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
+      title: 'Kvis',
+      description: 'A kubernetes visualization tool built with React, Go, Docker and Kubernetes (k3d).',
+      link: 'https://github.com/JosephPBaruch/Pong',
+    },
+    {
       title: 'josephbaruch.com',
-      description: 'A frontend web application built with React, AWS, and MUI.',
+      description: 'A frontend web application built with React, Docker, AWS, and MUI.',
       link: 'https://github.com/JosephPBaruch/josephbaruch.com',
     },
     {

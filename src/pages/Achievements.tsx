@@ -6,11 +6,11 @@ const Achievements = () => {
       <Typography variant="h4" gutterBottom>Achievements</Typography>
       <Typography variant="h6" gutterBottom>Bachelor's Degree</Typography>
       <Typography variant="body1">
-        I have completed my Bachelor's degree with a minor in Mathematics.
+        I will be graduating with a BS in Computer Science and a minor in mathematics in May 2026.
       </Typography>
-      <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>Pursuing Certificate in AI/ML</Typography>
+      <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>Undergraduate Certificate in AI/ML</Typography>
       <Typography variant="body1">
-        I am currently pursuing a certificate in Artificial Intelligence and Machine Learning.
+        I am currently pursuing a certificate in Artificial Intelligence and Machine Learning with the expected completion date of May 2026.
       </Typography>
     </Box>
   );
