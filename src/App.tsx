@@ -11,7 +11,7 @@ import Resume from './pages/Resume';
 import About from './pages/About';
 import Achievements from './pages/Achievements';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
+// import Switch from '@mui/material/Switch';
 import { Link } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -21,7 +21,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 function App() {
   const pages = ["Home", "About", "Projects", "Resume", "Achievements"];
   const [page, setPage] = useState("Home");
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,9 +34,9 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      // mode: darkMode ? 'dark' : 'light',
       background: {
-        default: darkMode ? '#303030' : '#f5f5f5',
+        // default: darkMode ? '#303030' : '#f5f5f5',
       },
     },
   });
@@ -130,7 +130,7 @@ function App() {
                   </Button>
                 ))}
               </Box>
-              <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+              {/* <Switch  checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
             </Toolbar>
           </Container>
         </AppBar>
@@ -158,14 +158,14 @@ function App() {
               >
                Joseph Baruch
               </Typography>
-              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'center' }}>
-                <Link color="inherit" href="https://github.com/JosephPBaruch" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'flex-end' }}>
+                <Link color="inherit" href="https://github.com/JosephPBaruch" sx={{ my: 2, color: 'white', display: 'block', mx: 1, fontFamily: 'monospace', fontWeight: 700, letterSpacing: '.3rem' }}>
                   GitHub
                 </Link>
-                <Link color="inherit" href="https://www.linkedin.com/in/joseph-peter-baruch/" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
+                <Link color="inherit" href="https://www.linkedin.com/in/joseph-peter-baruch/" sx={{ my: 2, color: 'white', display: 'block', mx: 1, fontFamily: 'monospace', fontWeight: 700, letterSpacing: '.3rem' }}>
                   LinkedIn
                 </Link>
-                <Link color="inherit" href="mailto:josephbaruch48@gmail.com" sx={{ my: 2, color: 'white', display: 'block', mx: 1 }}>
+                <Link color="inherit" href="mailto:josephbaruch48@gmail.com" sx={{ my: 2, color: 'white', display: 'block', mx: 1, fontFamily: 'monospace', fontWeight: 700, letterSpacing: '.3rem' }}>
                   Contact
                 </Link>
               </Box>
