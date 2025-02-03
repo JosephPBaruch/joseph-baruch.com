@@ -27,20 +27,20 @@ const Projects: React.FC = () => {
 
   const projects = [
     {
+      title: 'Kvis',
+      description: 'A kubernetes visualization tool built with React, Go, Docker and Kubernetes (k3d).',
+      link: 'https://github.com/JosephPBaruch/kvis',
+    },
+    {
       title: 'josephbaruch.com',
-      description: 'A frontend web application built with React, AWS, and MUI.',
+      description: 'A frontend web application built with React, Docker, AWS, and MUI.',
       link: 'https://github.com/JosephPBaruch/josephbaruch.com',
     },
     {
       title: 'Weather App',
       description: 'A Express.js application making http requests to retrieve weather data based on an address.',
       link: 'https://github.com/JosephPBaruch/data_web_app',
-    },
-    {
-      title: 'Pong',
-      description: 'Pong built in the Unity game engine',
-      link: 'https://github.com/JosephPBaruch/Pong',
-    },
+    }
     // Add more projects as needed
   ];
 
