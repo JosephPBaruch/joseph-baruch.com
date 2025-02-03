@@ -134,7 +134,7 @@ function App() {
             </Toolbar>
           </Container>
         </AppBar>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, pb: 3 }}>
           { page !== "Home" || <Home /> }
           { page !== "Projects" || <Projects /> }
           { page !== "Resume" || <Resume />}
