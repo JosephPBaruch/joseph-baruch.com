@@ -29,7 +29,7 @@ const Projects: React.FC = () => {
     {
       title: 'Kvis',
       description: 'A kubernetes visualization tool built with React, Go, Docker and Kubernetes (k3d).',
-      link: 'https://github.com/JosephPBaruch/Pong',
+      link: 'https://github.com/JosephPBaruch/kvis',
     },
     {
       title: 'josephbaruch.com',
@@ -40,12 +40,7 @@ const Projects: React.FC = () => {
       title: 'Weather App',
       description: 'A Express.js application making http requests to retrieve weather data based on an address.',
       link: 'https://github.com/JosephPBaruch/data_web_app',
-    },
-    {
-      title: 'Pong',
-      description: 'Pong built in the Unity game engine',
-      link: 'https://github.com/JosephPBaruch/Pong',
-    },
+    }
     // Add more projects as needed
   ];
 
