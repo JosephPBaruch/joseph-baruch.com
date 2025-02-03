@@ -9,7 +9,6 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Resume from './pages/Resume';
 import About from './pages/About';
-import Blog from './pages/Blog';
 import Achievements from './pages/Achievements';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
@@ -20,7 +19,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
-  const pages = ["Home", "About", "Projects", "Resume", "Blog", "Achievements"];
+  const pages = ["Home", "About", "Projects", "Resume", "Achievements"];
   const [page, setPage] = useState("Home");
   const [darkMode, setDarkMode] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -140,7 +139,6 @@ function App() {
           { page !== "Projects" || <Projects /> }
           { page !== "Resume" || <Resume />}
           { page !== "About" || <About /> }
-          { page !== "Blog" || <Blog /> }
           { page !== "Achievements" || <Achievements /> }
         </Box>
         <AppBar position="static" component="footer" sx={{ top: 'auto', bottom: 0 }}>
