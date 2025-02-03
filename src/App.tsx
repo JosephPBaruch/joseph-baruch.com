@@ -8,7 +8,7 @@ import { useState } from 'react';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Resume from './pages/Resume';
-import About from './pages/About';
+// import About from './pages/About';
 import Achievements from './pages/Achievements';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import Switch from '@mui/material/Switch';
@@ -19,7 +19,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 function App() {
-  const pages = ["Home", "About", "Projects", "Resume", "Achievements"];
+  const pages = ["Home",  "Projects", "Resume", "Achievements"]; // "About",
   const [page, setPage] = useState("Home");
   // const [darkMode, setDarkMode] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -138,7 +138,7 @@ function App() {
           { page !== "Home" || <Home /> }
           { page !== "Projects" || <Projects /> }
           { page !== "Resume" || <Resume />}
-          { page !== "About" || <About /> }
+          {/* { page !== "About" || <About /> } */}
           { page !== "Achievements" || <Achievements /> }
         </Box>
         <AppBar position="static" component="footer" sx={{ top: 'auto', bottom: 0, display: 'flex' }}>

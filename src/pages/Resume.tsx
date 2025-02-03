@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Typography, Box, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const useStyles = makeStyles({
   root: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles({
 
 const Resume: React.FC = () => {
   const classes = useStyles();
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   return (
     <Container maxWidth="md" className={classes.root}>
@@ -26,18 +28,28 @@ const Resume: React.FC = () => {
       </Typography>
       <Box>
         <Typography variant="body1" align="center" gutterBottom>
-         Feel free to check out my resume to learn more about my experience, skills, and education.
+          Feel free to check out my resume to learn more about my experience, skills, and education.
         </Typography>
       </Box>
-      <Box className={classes.pdfContainer}>
-        <iframe
-          src="/Resume.pdf"
-          width="100%"
-          height="100%"
-          style={{ border: 'none' }}
-          title="Resume"
-        />
-      </Box>
+      {isSmallScreen ? (
+        <Box>
+          <Typography variant="body1" align="center" gutterBottom>
+            <Link href="/Resume.pdf" download>
+              Download Resume
+            </Link>
+          </Typography>
+        </Box>
+      ) : (
+        <Box className={classes.pdfContainer}>
+          <iframe
+            src="/Resume.pdf"
+            width="100%"
+            height="100%"
+            style={{ border: 'none' }}
+            title="Resume"
+          />
+        </Box>
+      )}
     </Container>
   );
 };
