@@ -59,7 +59,7 @@ To run the application locally, you can build and run the Docker container:
 2. Run the container:
 
    ```bash
-   docker run -p 3000:3000 my-typescript-app
+   docker run -p 3000:8084 my-typescript-app
    ```
 
 3. The application will be available at `http://localhost:3000`.
