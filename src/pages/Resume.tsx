@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Typography, Box, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -44,7 +43,7 @@ const Resume: React.FC = () => {
           <iframe
             src="/Resume.pdf"
             width="100%"
-            height="100%"
+            height="800vh"
             style={{ border: 'none' }}
             title="Resume"
           />
@@ -53,5 +52,4 @@ const Resume: React.FC = () => {
     </Container>
   );
 };
-
 export default Resume;
