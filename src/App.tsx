@@ -136,7 +136,6 @@ function App() {
               <IconButton onClick={() => setDarkMode(!darkMode)} >
                 <DarkModeIcon/>
               </IconButton>
-               {/* <Switch  checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
             </Toolbar>
           </Container>
         </AppBar>
