@@ -11,13 +11,14 @@ import Resume from './pages/Resume';
 // import About from './pages/About';
 import Achievements from './pages/Achievements';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
+// import Switch from '@mui/material/Switch';
 import { Link } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CssBaseline from '@mui/material/CssBaseline';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function App() {
   const pages = ["Home",  "Projects", "Resume", "Achievements"]; // "About",
@@ -132,7 +133,10 @@ function App() {
                   </Button>
                 ))}
               </Box>
-              <Switch  checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+              <IconButton onClick={() => setDarkMode(!darkMode)} >
+                <DarkModeIcon/>
+              </IconButton>
+               {/* <Switch  checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
             </Toolbar>
           </Container>
         </AppBar>
