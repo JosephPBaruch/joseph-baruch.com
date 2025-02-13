@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    paddingTop: '30px',
+    // paddingTop: '30px',
   },
   projectsContainer: {
     maxHeight: '80vh',
@@ -45,7 +45,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <Container maxWidth="md" className={classes.root}>
+    <Container sx={{ p: 3 }} maxWidth="md" className={classes.root}>
       <Typography variant="h4" className={classes.title} gutterBottom>
         My Projects
       </Typography>
