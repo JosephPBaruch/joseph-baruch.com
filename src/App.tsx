@@ -17,11 +17,13 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import CssBaseline from '@mui/material/CssBaseline';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function App() {
   const pages = ["Home",  "Projects", "Resume", "Achievements"]; // "About",
   const [page, setPage] = useState("Home");
-  // const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,15 +36,16 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      // mode: darkMode ? 'dark' : 'light',
+      mode: darkMode ? 'dark' : 'light',
       background: {
-        // default: darkMode ? '#303030' : '#f5f5f5',
+        default: darkMode ? '#303030' : '#f5f5f5',
       },
     },
   });
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <AppBar position="static">
           <Container maxWidth="xl">
@@ -130,7 +133,9 @@ function App() {
                   </Button>
                 ))}
               </Box>
-              {/* <Switch  checked={darkMode} onChange={() => setDarkMode(!darkMode)} /> */}
+              <IconButton onClick={() => setDarkMode(!darkMode)} >
+                <DarkModeIcon/>
+              </IconButton>
             </Toolbar>
           </Container>
         </AppBar>

@@ -21,7 +21,7 @@ const Resume: React.FC = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   return (
-    <Container maxWidth="md" className={classes.root}>
+    <Container sx={{ p: 3 }} maxWidth="md" className={classes.root}>
       <Typography variant="h4" gutterBottom>
         My Resume
       </Typography>
