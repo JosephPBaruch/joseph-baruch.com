@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: josephbaruch-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: josephbaruch
+  template:
+    metadata:
+      labels:
+        app: josephbaruch
+    spec:
+      containers:
+      - name: josephbaruch-container
+        image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/josephbaruch.com:latest
+        ports:
+        - containerPort: 8084

@@ -46,6 +46,3 @@ jobs:
         run: |
           IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
           docker push $IMAGE_TAG
-
-      # Optionally Step 6: Trigger AWS App Runner deployment (if needed)
-      # If App Runner is connected to the ECR repo, it will automatically detect the new image version
