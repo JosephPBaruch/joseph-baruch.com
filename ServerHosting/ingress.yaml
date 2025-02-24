@@ -15,4 +15,4 @@ spec:
           service:
             name: josephbaruch-service
             port:
-              number: 7999
+              number: 8009
