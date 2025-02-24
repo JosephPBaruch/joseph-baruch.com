@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: josephbaruch-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.entrypoints: josephbaruch
 spec:
   rules:
   - host: localhost
