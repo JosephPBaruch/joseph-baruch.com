@@ -3,11 +3,10 @@ kind: Ingress
 metadata:
   name: josephbaruch-ingress
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: josephbaruch
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: localhost
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
