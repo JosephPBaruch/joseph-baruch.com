@@ -37,16 +37,15 @@ const CoverLetter: React.FC = () => {
             <Link href="/CoverLetter.pdf" download>
               Download Cover Letter
             </Link>
+            ß
           </Typography>
         </Box>
       ) : (
         <Box className={classes.pdfContainer}>
-          <iframe
-            src="/CoverLetter.pdf"
-            width="100%"
-            height="800"
-            style={{ border: "none" }}
-            title="Cover Letter"
+          <img
+            src="/CoverLetter.png"
+            alt="Cover Letter"
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         </Box>
       )}
