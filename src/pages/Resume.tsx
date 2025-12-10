@@ -40,15 +40,31 @@ const Resume: React.FC = () => {
           </Typography>
         </Box>
       ) : (
-        <Box className={classes.pdfContainer}>
-          <iframe
-            src="/Resume.pdf"
+        <>
+          <Box className={classes.pdfContainer}>
+            <iframe
+              src="/Resume.pdf"
+              width="100%"
+              height="800"
+              style={{ border: "none" }}
+              title="Resume"
+            />
+          </Box>
+          <object
+            data="/CoverLetter.pdf"
+            type="application/pdf"
             width="100%"
-            height="800"
-            style={{ border: "none" }}
-            title="Resume"
-          />
-        </Box>
+            height="80vh"
+          >
+            <a
+              href="/CoverLetter.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View my cover letter (PDF)
+            </a>
+          </object>
+        </>
       )}
     </Container>
   );
