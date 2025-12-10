@@ -42,7 +42,7 @@ const CoverLetter: React.FC = () => {
       ) : (
         <Box className={classes.pdfContainer}>
           <iframe
-            src="/CoverLetter.pdf"
+            src="http://josephbaruch.com/CoverLetter.pdf"
             width="100%"
             height="800vh"
             style={{ border: "none" }}
