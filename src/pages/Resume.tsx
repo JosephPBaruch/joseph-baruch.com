@@ -64,6 +64,13 @@ const Resume: React.FC = () => {
               View my cover letter (PDF)
             </a>
           </object>
+          <a
+            href="https://josephbaruch.com/CoverLetter.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Open PDF
+          </a>
         </>
       )}
     </Container>
