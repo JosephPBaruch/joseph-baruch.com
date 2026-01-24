@@ -327,6 +327,53 @@ sudo certbot --nginx -d your-domain.com -d www.your-domain.com
 # Certificate will auto-renew
 ```
 
+### Auto-Start on Server Boot (systemd)
+
+To ensure your website starts automatically when your server boots:
+
+1. Copy the systemd service file:
+   ```bash
+   sudo cp /opt/josephbaruch.com/josephbaruch-website.service /etc/systemd/system/
+   ```
+
+2. Reload systemd and enable the service:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable josephbaruch-website.service
+   sudo systemctl start josephbaruch-website.service
+   ```
+
+3. Check the service status:
+   ```bash
+   sudo systemctl status josephbaruch-website.service
+   ```
+
+**Note:** Make sure to update the `User=` line in the service file if you're not using a `deploy` user.
+
+### Using the Management Script
+
+A convenient `manage.sh` script is provided for common operations:
+
+```bash
+# Show available commands
+./manage.sh help
+
+# Check website status
+./manage.sh status
+
+# View live logs
+./manage.sh logs
+
+# Restart the website
+./manage.sh restart
+
+# Update to latest version
+./manage.sh update
+
+# Check website health
+./manage.sh health
+```
+
 ## Security Best Practices
 
 1. **Keep your server updated:**

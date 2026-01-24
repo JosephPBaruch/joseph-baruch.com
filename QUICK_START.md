@@ -74,7 +74,15 @@ See the **[Full Deployment Guide](DEPLOYMENT.md#method-2-automated-deployment-vi
 ## 🛠️ Common Commands
 
 ```bash
-# View logs
+# Quick management using the manage script
+./manage.sh status      # Check website status
+./manage.sh logs        # View live logs
+./manage.sh restart     # Restart website
+./manage.sh update      # Deploy latest version
+./manage.sh health      # Health check
+./manage.sh help        # Show all commands
+
+# Or use docker compose directly
 cd /opt/josephbaruch.com
 docker compose logs -f
 
