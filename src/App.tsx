@@ -20,6 +20,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import CssBaseline from "@mui/material/CssBaseline";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import AIChat from "./components/AIChat";
 
 function App() {
   const pages = ["Home", "Projects", "Resume", "Cover Letter", "Achievements"]; // "About",
@@ -237,6 +238,7 @@ function App() {
             </Toolbar>
           </Container>
         </AppBar>
+        <AIChat />
       </Box>
     </ThemeProvider>
   );
