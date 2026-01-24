@@ -1,0 +1,64 @@
+name: Deploy to Home Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Home Server
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Home Server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOME_SERVER_HOST }}
+          username: ${{ secrets.HOME_SERVER_USER }}
+          key: ${{ secrets.HOME_SERVER_SSH_KEY }}
+          port: ${{ secrets.HOME_SERVER_PORT || 22 }}
+          script: |
+            # Set repository directory
+            REPO_DIR="/opt/josephbaruch.com"
+            
+            # Create directory if it doesn't exist
+            if [ ! -d "$REPO_DIR" ]; then
+              sudo mkdir -p "$REPO_DIR"
+              sudo chown $USER:$USER "$REPO_DIR"
+            fi
+            
+            # Navigate to repository directory
+            cd "$REPO_DIR"
+            
+            # Clone repository if it doesn't exist
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/JosephPBaruch/joseph-baruch.com.git .
+            fi
+            
+            # Pull latest changes
+            git fetch origin
+            git checkout main
+            git pull origin main
+            
+            # Make deployment script executable
+            chmod +x deploy-home.sh
+            
+            # Run deployment script
+            ./deploy-home.sh
+
+      - name: Deployment Status
+        if: success()
+        run: |
+          echo "✅ Deployment to home server completed successfully!"
+          echo "Website should be available at: http://${{ secrets.HOME_SERVER_HOST }}:8084"
+
+      - name: Deployment Failed
+        if: failure()
+        run: |
+          echo "❌ Deployment to home server failed!"
+          echo "Please check the logs above for details."

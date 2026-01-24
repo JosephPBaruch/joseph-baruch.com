@@ -1,6 +1,6 @@
-# Containerized TypeScript Application
+# Joseph Baruch Personal Website
 
-Change this: This repository contains a containerized TypeScript application that is built, tested, and deployed using CI pipelines. The container image is pushed to AWS Elastic Container Registry (ECR) and deployed on AWS App Runner.
+This repository contains a containerized React + TypeScript application that can be deployed to AWS or your personal home server. The application is built with Vite and served using Nginx in a Docker container.
 
 ## Table of Contents
 
@@ -9,27 +9,31 @@ Change this: This repository contains a containerized TypeScript application tha
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Running Locally](#running-locally)
+- [Deployment Options](#deployment-options)
+  - [Home Server Deployment](#home-server-deployment)
+  - [AWS ECR and App Runner Deployment](#aws-ecr-and-app-runner-deployment)
 - [Continuous Integration (CI)](#continuous-integration-ci)
-- [AWS ECR and App Runner Deployment](#aws-ecr-and-app-runner-deployment)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
 
-This project is designed to run a TypeScript application in a Docker container. The CI pipeline automates the build process, ensuring the container is consistently up-to-date with the latest application changes. The pipeline also pushes the image to AWS Elastic Container Registry (ECR) for deployment using AWS App Runner, allowing seamless and scalable deployment of the application.
+This project is a personal website built with React, TypeScript, and Material-UI, containerized with Docker for easy deployment. It supports multiple deployment options:
+- **Home Server**: Deploy to your personal server with automated updates
+- **AWS**: Deploy to AWS App Runner via ECR for cloud hosting
+
+The CI/CD pipelines automate the build and deployment process for both options.
 
 ## Getting Started
 
-Follow these steps to set up the project locally and deploy it to AWS.
+Follow these steps to set up the project locally.
 
 ### Prerequisites
 
 Make sure you have the following installed on your machine:
 
-- [Node.js](https://nodejs.org/) (v14.x or above)
-- [Docker](https://www.docker.com/get-started)
-- [AWS CLI](https://aws.amazon.com/cli/)
-- [AWS IAM Access](https://aws.amazon.com/iam/) configured with the necessary permissions for ECR and App Runner.
+- [Node.js](https://nodejs.org/) (v18.x or above)
+- [Docker](https://www.docker.com/get-started) (for containerized deployment)
 - [Git](https://git-scm.com/)
 
 ### Installation
@@ -37,8 +41,8 @@ Make sure you have the following installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/JosephPBaruch/joseph-baruch.com.git
+   cd joseph-baruch.com
    ```
 
 2. Install dependencies:
@@ -48,40 +52,92 @@ Make sure you have the following installed on your machine:
 
 ## Running Locally
 
-To run the application locally, you can build and run the Docker container:
+### Option 1: Development Mode (without Docker)
 
-1. Build the Docker image:
+```bash
+# Install dependencies
+npm install
 
-   ```bash
-   docker build -t my-typescript-app .
-   ```
+# Run development server
+npm run dev
+```
 
-2. Run the container:
+The application will be available at `http://localhost:5173`.
 
-   ```bash
-   docker run -p 3000:8084 my-typescript-app
-   ```
+### Option 2: Docker Container (Production-like)
 
-3. The application will be available at `http://localhost:3000`.
+```bash
+# Build the Docker image
+docker build -t josephbaruch.com .
+
+# Run the container
+docker run -p 8084:8084 josephbaruch.com
+```
+
+The application will be available at `http://localhost:8084`.
+
+### Option 3: Docker Compose
+
+```bash
+# Build and run with docker-compose
+docker compose up -d
+
+# View logs
+docker compose logs -f
+
+# Stop
+docker compose down
+```
+
+The application will be available at `http://localhost:8084`.
+
+## Deployment Options
+
+### Home Server Deployment
+
+Deploy the website to your personal home server with automated updates.
+
+#### 🚀 Quick Start
+
+See **[QUICK_START.md](QUICK_START.md)** for a 5-minute deployment guide.
+
+#### 📚 Full Documentation
+
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** for comprehensive setup instructions including:
+- Initial server setup and prerequisites
+- Manual deployment process
+- Automated deployment via GitHub Actions
+- Security configuration
+- Troubleshooting
+
+#### Quick Deploy Command
+
+```bash
+cd /opt && \
+  sudo mkdir -p josephbaruch.com && \
+  sudo chown $USER:$USER josephbaruch.com && \
+  cd josephbaruch.com && \
+  git clone https://github.com/JosephPBaruch/joseph-baruch.com.git . && \
+  chmod +x deploy-home.sh && \
+  ./deploy-home.sh
+```
+
+Your website will be running at `http://localhost:8084` 🎉
 
 ## Continuous Integration (CI)
 
-This project uses a CI pipeline to automate the following tasks:
+This project uses GitHub Actions for automated CI/CD with two workflows:
 
-1. **Linting and Testing:** Runs `npm run lint` and `npm test` to ensure code quality and verify application behavior.
-2. **Docker Image Build:** Builds the Docker image for the application.
-3. **Pushing to AWS ECR:** Pushes the Docker image to AWS Elastic Container Registry (ECR).
-4. **Deployment to AWS App Runner:** Triggers the deployment of the latest image on AWS App Runner.
+1. **AWS Deployment** (`.github/workflows/ci.yaml`):
+   - Builds the Docker image
+   - Pushes to AWS Elastic Container Registry (ECR)
+   - Deploys to AWS App Runner
 
-### CI Configuration
-
-CI is set up using a `.github/workflows/ci.yml` file (or an equivalent CI service configuration). It contains the following steps:
-
-1. **Install Dependencies:** Installs the necessary Node.js dependencies.
-2. **Run Lint and Tests:** Executes linting and unit tests.
-3. **Login to AWS ECR:** Authenticates using AWS credentials to push the image.
-4. **Build and Push Docker Image:** Builds the Docker image and pushes it to AWS ECR.
-5. **Deploy to App Runner:** Initiates deployment of the newly pushed image to AWS App Runner.
+2. **Home Server Deployment** (`.github/workflows/deploy-home.yml`):
+   - Connects to your home server via SSH
+   - Pulls latest code
+   - Rebuilds and restarts containers
+   - Automatically triggered on push to `main` branch
 
 ## AWS ECR and App Runner Deployment
 
