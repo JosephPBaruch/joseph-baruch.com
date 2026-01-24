@@ -11,8 +11,9 @@ interface ChatResponse {
 }
 
 /**
- * AI Agent Service using GitHub Copilot SDK
- * Answers questions about Joseph Baruch's resume
+ * AI Agent Service for answering questions about Joseph Baruch's resume
+ * Currently uses pattern matching to provide intelligent responses
+ * Future enhancement: Integrate with GitHub Copilot SDK for more advanced AI capabilities
  */
 class ResumeAIAgent {
   private conversationHistory: Message[] = [];
@@ -52,8 +53,8 @@ When answering questions:
         content: userMessage
       });
 
-      // For now, we'll use a simple pattern matching approach
-      // In a production environment, this would call the GitHub Copilot API
+      // Generate response using pattern matching
+      // Future enhancement: Replace with GitHub Copilot SDK integration
       const response = this.generateResponse(userMessage);
 
       // Add assistant response to history
@@ -75,8 +76,8 @@ When answering questions:
   }
 
   /**
-   * Generate a response based on the user's question
-   * This is a simplified implementation. In production, this would use the actual Copilot SDK
+   * Generate a response based on the user's question using pattern matching
+   * Future enhancement: Replace with GitHub Copilot SDK for more advanced AI
    */
   private generateResponse(userMessage: string): string {
     const messageLower = userMessage.toLowerCase();
