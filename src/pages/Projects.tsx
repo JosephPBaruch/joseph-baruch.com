@@ -2,6 +2,13 @@ import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardContent, CardActions, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
+interface Project {
+  title: string;
+  description: string;
+  technologies: string;
+  link?: string;
+}
+
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -25,7 +32,7 @@ const useStyles = makeStyles({
 const Projects: React.FC = () => {
   const classes = useStyles();
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: 'Kvis - Kubernetes Visualization Tool',
       description: 'A comprehensive Kubernetes visualization tool built with React, Go, Docker and Kubernetes (k3d). Provides real-time cluster monitoring and resource management capabilities.',
@@ -48,7 +55,6 @@ const Projects: React.FC = () => {
       title: 'Climate Image Classification Model',
       description: 'Machine learning project using YOLOv8 for climate image classification. Trained models with optimized hyperparameters to achieve high accuracy in climate pattern recognition.',
       technologies: 'Python, YOLOv8, Machine Learning',
-      link: 'https://github.com/JosephPBaruch',
     }
     // Add more projects as needed
   ];
@@ -74,11 +80,13 @@ const Projects: React.FC = () => {
                     Technologies: {project.technologies}
                   </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary" href={project.link} target="_blank">
-                    View on GitHub
-                  </Button>
-                </CardActions>
+                {project.link && (
+                  <CardActions>
+                    <Button size="small" color="primary" href={project.link} target="_blank">
+                      View on GitHub
+                    </Button>
+                  </CardActions>
+                )}
               </Card>
             </Grid>
           ))}
