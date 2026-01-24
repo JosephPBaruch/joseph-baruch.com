@@ -10,6 +10,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy to Home Server
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout code
