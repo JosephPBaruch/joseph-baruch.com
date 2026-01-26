@@ -17,35 +17,55 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up AWS CLI
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Run linter
+      - name: Run ESLint
+        run: npm run lint
+
+      # Step 5: Run TypeScript type checking and build
+      - name: Build application
+        run: npm run build
+
+      # Step 6: Build the Docker image (all branches)
+      - name: Build the Docker image
+        run: |
+          docker build -t josephbaruch.com .
+
+      # Step 7: Set up AWS CLI (main branch only)
       - name: Configure AWS credentials
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: aws-actions/configure-aws-credentials@v3
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: ${{ secrets.AWS_REGION }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # Step 3: Log in to AWS ECR
+      # Step 8: Log in to AWS ECR (main branch only)
       - name: Log in to Amazon ECR
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
-      # Step 4: Build the Docker image
-      - name: Build the Docker image
-        run: |
-          docker build -t josephbaruch.com .
-
-      # Step 5: Build the Docker image
+      # Step 9: Tag image (main branch only)
       - name: Tag image
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
           docker tag josephbaruch.com:latest $IMAGE_TAG
 
-      # Step 6: Push the Docker image to ECR
+      # Step 10: Push the Docker image to ECR (main branch only)
       - name: Push Docker image to Amazon ECR
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
           docker push $IMAGE_TAG
-
-      # Optionally Step 6: Trigger AWS App Runner deployment (if needed)
-      # If App Runner is connected to the ECR repo, it will automatically detect the new image version
