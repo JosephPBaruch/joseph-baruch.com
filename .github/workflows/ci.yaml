@@ -1,4 +1,4 @@
-name: Build and Push Image
+name: Build and Verify Image
 
 on:
   push:
@@ -40,32 +40,3 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build -t josephbaruch.com .
-
-      # Step 7: Set up AWS CLI (main branch only)
-      - name: Configure AWS credentials
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: aws-actions/configure-aws-credentials@v3
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-region: ${{ secrets.AWS_REGION }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      # Step 8: Log in to AWS ECR (main branch only)
-      - name: Log in to Amazon ECR
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-
-      # Step 9: Tag image (main branch only)
-      - name: Tag image
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
-          docker tag josephbaruch.com:latest $IMAGE_TAG
-
-      # Step 10: Push the Docker image to ECR (main branch only)
-      - name: Push Docker image to Amazon ECR
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          IMAGE_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/josephbaruch.com:latest
-          docker push $IMAGE_TAG
